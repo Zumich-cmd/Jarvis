@@ -1,0 +1,88 @@
+﻿<Window x:Class="Jarvis.SplashWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="System Boot"
+        WindowStyle="None"
+        WindowState="Maximized"
+        Background="Black"
+        Loaded="Window_Loaded">
+
+    <Grid>
+
+        <!-- Панель системних повідомлень (лог завантаження системи)
+             Виводить текстові статуси типу "ініціалізація", "запуск модулів" -->
+        <StackPanel x:Name="SystemMessagesPanel"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Left"
+                    Margin="50" />
+
+        <!-- Центральна зона (основний візуальний “реактор” системи) -->
+        <StackPanel VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+
+            <!-- Контейнер для анімації реактора -->
+            <Grid Width="200"
+                  Height="200"
+                  Margin="0,0,0,30">
+
+                <!-- Зовнішнє кільце реактора
+                     Використовується як індикатор "запуску системи" -->
+                <Ellipse x:Name="ReactorRing"
+                         Width="120"
+                         Height="120"
+                         Stroke="#29FFE6"
+                         StrokeThickness="2"
+                         Opacity="0">
+
+                    <!-- Світловий ефект (сяйво навколо кільця) -->
+                    <Ellipse.Effect>
+                        <DropShadowEffect Color="#29FFE6"
+                                          BlurRadius="20"
+                                          ShadowDepth="0" />
+                    </Ellipse.Effect>
+                </Ellipse>
+
+                <!-- Центральне ядро реактора (серце системи AI)
+                     Пульсує під час запуску -->
+                <Ellipse x:Name="ReactorCore"
+                         Width="60"
+                         Height="60"
+                         Fill="#00C8FF"
+                         Opacity="0">
+
+                    <!-- Сильне світіння ядра -->
+                    <Ellipse.Effect>
+                        <DropShadowEffect Color="#00C8FF"
+                                          BlurRadius="40"
+                                          ShadowDepth="0" />
+                    </Ellipse.Effect>
+
+                    <!-- Масштабування ядра (ефект "пульсу") -->
+                    <Ellipse.RenderTransform>
+                        <ScaleTransform x:Name="CoreScale"
+                                        ScaleX="1"
+                                        ScaleY="1"
+                                        CenterX="30"
+                                        CenterY="30"/>
+                    </Ellipse.RenderTransform>
+
+                </Ellipse>
+
+            </Grid>
+
+            <!-- Текст назви системи / стану завантаження -->
+            <TextBlock x:Name="TitleText"
+                       FontSize="64"
+                       Foreground="White"
+                       FontFamily="Consolas"
+                       HorizontalAlignment="Center"
+                       Height="80"
+                       Text="" />
+            <!-- Тут у коді буде поступово з’являтися текст типу:
+                 "INITIALIZING..."
+                 "LOADING CORE..."
+                 "J.A.R.V.I.S ONLINE" -->
+
+        </StackPanel>
+    </Grid>
+</Window>
